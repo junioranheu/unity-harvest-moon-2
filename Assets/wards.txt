@@ -1,0 +1,9 @@
+-> Tutorial #1: https://www.youtube.com/watch?v=REPefSyru-I&ab_channel=Terresquall
+
+-> GitHub com Unity: https://unityatscale.com/unity-version-control-guide/how-to-setup-unity-project-on-github/
+
+-> Committing changes: 
+Stage the changes to commit - git add -a
+Check that the changes are valid and complete, with no missing meta files, duplicate GUIDs etc.
+Commit the change - git commit -m "<YOUR MESSAGE>"
+Push the changes to GitHub - git push
