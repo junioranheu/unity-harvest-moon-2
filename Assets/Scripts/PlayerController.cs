@@ -4,9 +4,11 @@ using UnityEngine;
 // Tutorial: https://www.youtube.com/watch?v=REPefSyru-I&ab_channel=Terresquall
 public class PlayerController : MonoBehaviour
 {
-    // Controle de movimentos;
+    // Controles de movimentos e som;
     private CharacterController controller;
     private Animator animator;
+    public AudioSource audioSourceDance;
+    public AudioSource audioSourceInsult;
 
     [Header("Movement System")]
     private float moveSpeed = 2f;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Dance();
+        Insult();
         Jump();
     }
 
@@ -57,6 +60,10 @@ public class PlayerController : MonoBehaviour
 
             // Movimentar-se;
             controller.Move(velocity);
+            animator.SetBool("IsMoving", true);
+        } else
+        {
+            animator.SetBool("IsMoving", false);
         }
 
         // Existe uma variável chamada "Speed". Set-a um valor funcional;
@@ -65,13 +72,49 @@ public class PlayerController : MonoBehaviour
 
     private void Dance()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
+        bool isMoving = animator.GetBool("IsMoving");
+        bool isInsulting = animator.GetBool("IsInsulting");
+        if (Input.GetKey(KeyCode.LeftControl) && !isMoving && !isInsulting)
         {
             animator.SetBool("IsDancing", true);
         }
         else
         {
             animator.SetBool("IsDancing", false);
+        }
+
+        bool isDancing = animator.GetBool("IsDancing");
+        if (isDancing && !audioSourceDance.isPlaying)
+        {
+            audioSourceDance.Play();
+        }
+        else if (!isDancing)
+        {
+            audioSourceDance.Stop();
+        }
+    }
+
+    private void Insult()
+    {
+        bool isMoving = animator.GetBool("IsMoving");
+        bool isDancing = animator.GetBool("IsDancing");
+        if (Input.GetKey(KeyCode.CapsLock) && !isMoving && !isDancing)
+        {
+            animator.SetBool("IsInsulting", true);
+        }
+        else
+        {
+            animator.SetBool("IsInsulting", false);
+        }
+
+        bool isInsulting = animator.GetBool("IsInsulting");
+        if (isInsulting && !audioSourceInsult.isPlaying)
+        {
+            audioSourceInsult.Play();
+        }
+        else if (!isInsulting)
+        {
+            audioSourceInsult.Stop();
         }
     }
 

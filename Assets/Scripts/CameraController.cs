@@ -3,8 +3,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     Transform playerPos;
-    private readonly float offsetZ = 5f;
-    private readonly float smoothing = 1f;
+    private readonly float offsetZ = 5.5f;
+    private readonly float smoothing = 1.5f;
 
     void Start()
     {
