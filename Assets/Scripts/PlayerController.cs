@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 // Tutorial: https://www.youtube.com/watch?v=REPefSyru-I&ab_channel=Terresquall
@@ -7,9 +8,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
 
-    private float moveSpeed = 2f;
-
     [Header("Movement System")]
+    private float moveSpeed = 2f;
     private readonly float walkSpeed = 4f;
     private readonly float runSpeed = 8f;
 
@@ -24,17 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Dance();
-    }
-
-    private void Dance()
-    {
-        if (Input.GetKey(KeyCode.LeftControl)) // Left cntrl
-        {
-            animator.SetBool("IsDancing", true);
-        } else
-        {
-            animator.SetBool("IsDancing", false);
-        }
+        Jump();
     }
 
     private void Move()
@@ -71,5 +61,41 @@ public class PlayerController : MonoBehaviour
 
         // Existe uma variável chamada "Speed". Set-a um valor funcional;
         animator.SetFloat("Speed", velocity.magnitude);
+    }
+
+    private void Dance()
+    {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            animator.SetBool("IsDancing", true);
+        }
+        else
+        {
+            animator.SetBool("IsDancing", false);
+        }
+    }
+
+    private bool isPodePular = true;
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isPodePular)
+            {
+                isPodePular = false;
+                animator.SetBool("IsJumping", true);
+                StartCoroutine(SetIsPodePularTrue());
+            }
+        }
+        else
+        {
+            animator.SetBool("IsJumping", false);
+        }
+    }
+
+    private IEnumerator SetIsPodePularTrue()
+    {
+        yield return new WaitForSeconds(0.8f);
+        isPodePular = true;
     }
 }
