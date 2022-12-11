@@ -23,6 +23,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+        Dance();
+    }
+
+    private void Dance()
+    {
+        if (Input.GetButton("Fire1")) // Left cntrl
+        {
+            animator.SetBool("IsDancing", true);
+        } else
+        {
+            animator.SetBool("IsDancing", false);
+        }
     }
 
     private void Move()
