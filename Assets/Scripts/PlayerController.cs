@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dance()
     {
-        if (Input.GetButton("Fire1")) // Left cntrl
+        if (Input.GetKey(KeyCode.LeftControl)) // Left cntrl
         {
             animator.SetBool("IsDancing", true);
         } else
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = moveSpeed * Time.deltaTime * dir;
 
         // Checar se a "sprint key" (shift) está sendo pressionada;
-        if (Input.GetButton("Sprint"))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = runSpeed;
             animator.SetBool("IsRunning", true);
