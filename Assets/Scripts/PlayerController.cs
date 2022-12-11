@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Tutorial: https://www.youtube.com/watch?v=REPefSyru-I&ab_channel=Terresquall
@@ -12,8 +10,8 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 2f;
 
     [Header("Movement System")]
-    private float walkSpeed = 4f;
-    private float runSpeed = 8f;
+    private readonly float walkSpeed = 4f;
+    private readonly float runSpeed = 8f;
 
     void Start()
     {
