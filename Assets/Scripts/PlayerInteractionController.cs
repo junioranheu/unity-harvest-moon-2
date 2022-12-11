@@ -21,6 +21,11 @@ public class PlayerInteractionController : MonoBehaviour
 
     void OnInteractableHit(RaycastHit hit)
     {
-        Debug.Log(hit);
+        Collider other = hit.collider;
+
+        if (other.tag == "Land")
+        {
+
+        }
     }
 }
