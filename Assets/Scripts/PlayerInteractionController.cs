@@ -23,7 +23,7 @@ public class PlayerInteractionController : MonoBehaviour
         Collider other = hit.collider;
 
         // Se o usuário estiver em cima de uma land;
-        if (other.CompareTag("Land"))
+        if (other.CompareTag("Plant"))
         {
             Debug.Log("O personagem está em cima de uma land");
             LandController land = other.GetComponent<LandController>();

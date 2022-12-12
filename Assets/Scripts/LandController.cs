@@ -4,11 +4,11 @@ public class LandController : MonoBehaviour
 {
     public enum LandStatus
     {
-        Padrao, Soil, Mud
+        Dirt, Plant, Water
     }
 
     public LandStatus landStatus;
-    public Material padraoMat, soilMat, mudMat;
+    public Material dirtMat, plantMat, waterMat;
     new Renderer renderer;
     public GameObject select;
 
@@ -16,8 +16,8 @@ public class LandController : MonoBehaviour
     {
         renderer = GetComponent<Renderer>();
 
-        // Seleciona o "LandStatus.Padrao" por padrão;
-        SwitchLandStatus(LandStatus.Padrao);
+        // Seleciona o "LandStatus.Dirt" por padrão;
+        SwitchLandStatus(LandStatus.Dirt);
 
         // Desseleciona por padrão;
         Select(false);
@@ -26,18 +26,18 @@ public class LandController : MonoBehaviour
     public void SwitchLandStatus(LandStatus statusToSwitch)
     {
         landStatus = statusToSwitch;
-        Material materialToSwitch = padraoMat;
+        Material materialToSwitch = dirtMat;
 
         switch (statusToSwitch)
         {
-            case LandStatus.Padrao:
-                materialToSwitch = padraoMat;
+            case LandStatus.Dirt:
+                materialToSwitch = dirtMat;
                 break;
-            case LandStatus.Soil:
-                materialToSwitch = soilMat;
+            case LandStatus.Plant:
+                materialToSwitch = plantMat;
                 break;
-            case LandStatus.Mud:
-                materialToSwitch = mudMat;
+            case LandStatus.Water:
+                materialToSwitch = waterMat;
                 break;
             default:
                 break;
@@ -54,7 +54,7 @@ public class LandController : MonoBehaviour
 
     public void Interact()
     {
-        //Interaction 
-        SwitchLandStatus(LandStatus.Soil);
+        // Interação; 
+        SwitchLandStatus(LandStatus.Plant);
     }
 }

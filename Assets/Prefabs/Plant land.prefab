@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 4289773922293606336}
   - component: {fileID: 7194022964906518348}
   m_Layer: 0
-  m_Name: Land
-  m_TagString: Untagged
+  m_Name: Plant land
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c85ba69014538146a2af96a25914782, type: 2}
+  - {fileID: 2100000, guid: 332392c3d929bb140a5fbe4b6912cccd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landStatus: 0
-  padraoMat: {fileID: 2100000, guid: 62a3db7990d7ae24992960bd3ca82bff, type: 2}
-  soilMat: {fileID: 2100000, guid: 13a6963dba3824c4b9968b71612fe46d, type: 2}
-  mudMat: {fileID: 2100000, guid: 8c85ba69014538146a2af96a25914782, type: 2}
+  dirtMat: {fileID: 2100000, guid: 332392c3d929bb140a5fbe4b6912cccd, type: 2}
+  plantMat: {fileID: 2100000, guid: 13a6963dba3824c4b9968b71612fe46d, type: 2}
+  waterMat: {fileID: 2100000, guid: 8c85ba69014538146a2af96a25914782, type: 2}
   select: {fileID: 326532132772868539}
