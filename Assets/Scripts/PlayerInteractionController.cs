@@ -2,30 +2,64 @@ using UnityEngine;
 
 public class PlayerInteractionController : MonoBehaviour
 {
-    PlayerController playerController;
+    LandController selectedLand = null;
 
     void Start()
     {
-        playerController = transform.parent.GetComponent<PlayerController>();
+
     }
 
     void Update()
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1))
         {
             OnInteractableHit(hit);
         }
     }
 
+    // Quando o Interection toca algo;
     void OnInteractableHit(RaycastHit hit)
     {
         Collider other = hit.collider;
 
-        if (other.tag == "Land")
+        // Se o usuário estiver em cima de uma land;
+        if (other.CompareTag("Land"))
         {
-
+            // Debug.Log("O personagem está em cima de uma land");
+            LandController land = other.GetComponent<LandController>();
+            SelectLand(land);
+            return;
         }
+
+        // Desseleciona o land se o player não estiver em cima de nenhuma land;
+        if (selectedLand != null)
+        {
+            selectedLand.Select(false);
+            selectedLand = null;
+        }
+    }
+
+    // Processo de selecionar uma land;
+    void SelectLand(LandController land)
+    {
+        if (selectedLand != null)
+        {
+            selectedLand.Select(false);
+        }
+
+        selectedLand = land;
+        land.Select(true);
+    }
+
+    // Quando o player apertar o botão para interagir;
+    public void Interact()
+    {
+        if (selectedLand != null)
+        {
+            selectedLand.Interact();
+            return;
+        }
+
+        Debug.Log("Não está em nenhuma land!");
     }
 }

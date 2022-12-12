@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     private readonly float walkSpeed = 4f;
     private readonly float runSpeed = 8f;
 
+    PlayerInteractionController playerInteraction;
+
     void Start()
     {
         // Get componentes de movimentação;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        playerInteraction = GetComponentInChildren<PlayerInteractionController>();
     }
 
     void Update()
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour
         Dance();
         Insult();
         Jump();
+        Interact();
     }
 
     private void Move()
@@ -140,5 +144,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8f);
         isPodePular = true;
+    }
+
+    private void Interact()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            playerInteraction.Interact();
+        }
     }
 }

@@ -10,16 +10,17 @@ public class LandController : MonoBehaviour
     public LandStatus landStatus;
     public Material padraoMat, soilMat, mudMat;
     new Renderer renderer;
+    public GameObject select;
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
+
+        // Seleciona o "LandStatus.Padrao" por padrão;
         SwitchLandStatus(LandStatus.Padrao);
-    }
 
-    void Update()
-    {
-
+        // Desseleciona por padrão;
+        Select(false);
     }
 
     public void SwitchLandStatus(LandStatus statusToSwitch)
@@ -44,5 +45,16 @@ public class LandController : MonoBehaviour
 
         // Aplicar as alterações no renderer;
         renderer.material = materialToSwitch;
+    }
+
+    public void Select(bool toggle)
+    {
+        select.SetActive(toggle);
+    }
+
+    public void Interact()
+    {
+        //Interaction 
+        SwitchLandStatus(LandStatus.Soil);
     }
 }
