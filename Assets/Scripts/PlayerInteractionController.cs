@@ -25,7 +25,7 @@ public class PlayerInteractionController : MonoBehaviour
         // Se o usuário estiver em cima de uma land;
         if (other.CompareTag("Land"))
         {
-            // Debug.Log("O personagem está em cima de uma land");
+            Debug.Log("O personagem está em cima de uma land");
             LandController land = other.GetComponent<LandController>();
             SelectLand(land);
             return;
@@ -34,6 +34,7 @@ public class PlayerInteractionController : MonoBehaviour
         // Desseleciona o land se o player não estiver em cima de nenhuma land;
         if (selectedLand != null)
         {
+            Debug.Log("Desselecionar");
             selectedLand.Select(false);
             selectedLand = null;
         }
