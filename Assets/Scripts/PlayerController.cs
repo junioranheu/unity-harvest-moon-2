@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSourceDance;
     public AudioSource audioSourceInsult;
 
-    [Header("Movement System")]
+    [Header("Movement")]
     private float moveSpeed = 2f;
     private readonly float walkSpeed = 4f;
     private readonly float runSpeed = 8f;
@@ -65,13 +65,14 @@ public class PlayerController : MonoBehaviour
             // Movimentar-se;
             controller.Move(velocity);
             animator.SetBool("IsMoving", true);
-        } else
+        }
+        else
         {
             animator.SetBool("IsMoving", false);
         }
 
         // Existe uma variável chamada "Speed". Set-a um valor funcional;
-        animator.SetFloat("Speed", velocity.magnitude);
+        animator.SetFloat("Speed", velocity.magnitude);     
     }
 
     private void Dance()
